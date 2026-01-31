@@ -45,7 +45,7 @@ def main():
     for _, value in parsed_args._get_kwargs():
         page = 1
         if value is not None:
-            while quantity < parsed_args.max:
+            while (quantity < parsed_args.max) if parsed_args.max is not None else True:
                 pictures = search_by_name(value,parsed_args,page,quantity)
                 download_pictures(pictures,parsed_args)
                 if page >= pictures['meta']['last_page']:
